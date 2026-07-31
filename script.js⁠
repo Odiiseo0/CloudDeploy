@@ -1,24 +1,22 @@
-// Información que se despliega de forma dinámica al hacer clic en las herramientas
 const toolData = {
     docker: {
         title: "Docker",
-        description: "Plataforma de código abierto que empaqueta una aplicación y todas sus dependencias en un contenedor aislado. Esto garantiza que la aplicación funcione exactamente igual sin importar si se ejecuta en una computadora local, en servidores de prueba o en la nube."
+        description: "Plataforma de contenedores que aísla aplicaciones y dependencias para garantizar ejecución idéntica en cualquier equipo o servidor."
     },
     aws: {
-        title: "Amazon Web Services (AWS) - ECS / EKS",
-        description: "Plataforma de servicios en la nube de Amazon. Ofrece servicios como Amazon ECS y EKS (Elastic Kubernetes Service) para desplegar, escalar y administrar contenedores de forma automatizada y segura a gran escala."
+        title: "Amazon Web Services (AWS)",
+        description: "Nube líder de Amazon. Utiliza servicios como ECS y EKS para administrar contenedores automatizados a gran escala."
     },
     azure: {
-        title: "Microsoft Azure - Container Instances / AKS",
-        description: "Servicio en la nube de Microsoft que cuenta con Azure Kubernetes Service (AKS) y Container Instances, permitiendo gestionar clústeres de contenedores con integración nativa hacia herramientas de desarrollo y control de versiones."
+        title: "Microsoft Azure",
+        description: "Nube de Microsoft con soporte para Azure Kubernetes (AKS) e integración nativa con herramientas de desarrollo."
     },
     gcp: {
-        title: "Google Cloud Platform (GCP) - GKE",
-        description: "Infraestructura en la nube de Google. Destaca por Google Kubernetes Service (GKE) y Cloud Run, herramientas optimizadas para ejecutar contenedores basados en tecnologías desarrolladas inicialmente por la propia Google."
+        title: "Google Cloud Platform (GCP)",
+        description: "Infraestructura de Google destacada por GKE (Google Kubernetes Engine) y Cloud Run para contenedores optimizados."
     }
 };
 
-// Función interactiva para cambiar el contenido de la caja de información
 function showInfo(toolKey) {
     const titleElement = document.getElementById("info-title");
     const textElement = document.getElementById("info-text");
@@ -28,10 +26,9 @@ function showInfo(toolKey) {
         titleElement.textContent = toolData[toolKey].title;
         textElement.textContent = toolData[toolKey].description;
         
-        // Efecto visual rápido de transición
-        infoBox.style.opacity = "0.3";
+        infoBox.style.opacity = "0.2";
         setTimeout(() => {
             infoBox.style.opacity = "1";
-        }, 150);
+        }, 100);
     }
 }
