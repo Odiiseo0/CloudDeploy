@@ -4,9 +4,233 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CloudDeploy - Unidad IV</title>
-    <link rel="stylesheet" href="style.css">
     <!-- FontAwesome para iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --accent-color: #38bdf8;
+            --text-color: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: rgba(30, 41, 59, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        nav {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            padding-bottom: 5px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 90px auto 40px;
+            padding: 15px;
+        }
+
+        .card-section {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        }
+
+        .card-section h2 {
+            color: var(--accent-color);
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-section > p {
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .badge-img {
+            background: linear-gradient(135deg, #38bdf820, #38bdf810);
+            border: 1px dashed var(--accent-color);
+            padding: 25px;
+            text-align: center;
+            border-radius: 10px;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        .badge-img i {
+            font-size: 2.5rem;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .instruction {
+            font-size: 0.85rem;
+            color: var(--accent-color);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .interactive-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        @media(min-width: 600px) {
+            .interactive-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .tool-card {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            padding: 15px 10px;
+            text-align: center;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .tool-card:active, .tool-card:hover {
+            border-color: var(--accent-color);
+            background-color: #162238;
+            transform: scale(0.98);
+        }
+
+        .tool-card i {
+            font-size: 1.8rem;
+            color: var(--accent-color);
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .tool-card span {
+            font-size: 0.8rem;
+            color: var(--text-color);
+            font-weight: 600;
+        }
+
+        .info-display {
+            background-color: var(--bg-color);
+            border-left: 4px solid var(--accent-color);
+            padding: 15px;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .info-display h4 {
+            color: var(--accent-color);
+            margin-bottom: 6px;
+            font-size: 1rem;
+        }
+
+        .info-display p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .infra-list, .tests-grid, .release-box {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .infra-item, .test-card, .release-col {
+            background-color: var(--bg-color);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+        }
+
+        .infra-item h4, .test-card h3, .release-col h3 {
+            color: var(--accent-color);
+            font-size: 1rem;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .infra-item p, .test-card p, .release-col p, .release-col li {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .release-col ul {
+            padding-left: 18px;
+            margin-top: 5px;
+        }
+
+        .release-col li {
+            margin-bottom: 4px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px 15px;
+            background-color: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+    </style>
 </head>
 <body>
 
@@ -17,25 +241,26 @@
         </div>
         <nav>
             <a href="#contenedores">Contenedores</a>
-            <a href="#infraestructura">Infraestructura Nube</a>
+            <a href="#infraestructura">Nube</a>
             <a href="#pruebas">Pruebas</a>
-            <a href="#liberacion">Liberación & Docs</a>
+            <a href="#liberacion">Liberación</a>
         </nav>
     </header>
 
-    <!-- HERO SECTION -->
     <main class="container">
 
         <!-- TEMA 1: CONTENEDORES -->
         <section id="contenedores" class="card-section">
-            <h2><i class="fa-solid fa-box"></i> Concepto de Contenedores y Herramientas</h2>
-            <p>Los contenedores son unidades de software estándar que empaquetan el código y todas sus dependencias para que la aplicación se ejecute de manera rápida y confiable en cualquier entorno.</p>
-            <div class="image-box">
-                <img src="https://images.unsplash.com/photo-1618401471353-b98aedd04e11?q=80&w=1000&auto=format&fit=crop" alt="Contenedores Docker">
+            <h2><i class="fa-solid fa-box"></i> Contenedores</h2>
+            <p>Unidades de software estándar que empaquetan el código y sus dependencias para ejecutarse de forma rápida y confiable en cualquier entorno.</p>
+            
+            <div class="badge-img">
+                <i class="fa-solid fa-server"></i>
+                <span>Arquitectura de Contenedorización Web</span>
             </div>
             
-            <h3>Herramientas para la Gestión de Contenedores</h3>
-            <p class="instruction"><i class="fa-solid fa-hand-pointer"></i> Haz clic en cada herramienta para ver su información detallada:</p>
+            <h3>Herramientas de Gestión</h3>
+            <p class="instruction"><i class="fa-solid fa-hand-pointer"></i> Toca una herramienta para ver su info:</p>
             
             <div class="interactive-grid">
                 <div class="tool-card" onclick="showInfo('docker')">
@@ -58,109 +283,143 @@
 
             <div id="info-box" class="info-display">
                 <h4 id="info-title">Selecciona una herramienta</h4>
-                <p id="info-text">La información correspondiente aparecerá aquí al hacer clic en uno de los cuadros superiores.</p>
+                <p id="info-text">La información detallada aparecerá aquí al presionar los botones de arriba.</p>
             </div>
         </section>
 
         <!-- TEMA 2: INFRAESTRUCTURA EN LA NUBE -->
         <section id="infraestructura" class="card-section">
-            <h2><i class="fa-solid fa-cloud"></i> Servicios de Infraestructura para Cómputo en la Nube</h2>
-            <p>La configuración de la infraestructura asegura que la aplicación web soporte cargas de trabajo reales de forma segura y escalable.</p>
+            <h2><i class="fa-solid fa-cloud"></i> Infraestructura Cloud</h2>
+            <p>Configuración esencial para asegurar que la aplicación soporte cargas reales de forma segura.</p>
             
             <div class="infra-list">
                 <div class="infra-item">
                     <h4><i class="fa-solid fa-server"></i> Servidor de Aplicaciones</h4>
-                    <p>Entorno de software que proporciona el entorno de ejecución para los componentes de la aplicación y lógica de negocio (ej. Node.js, Tomcat, Gunicorn).</p>
+                    <p>Entorno que ejecuta la lógica de negocio y componentes (ej. Node.js, Tomcat).</p>
                 </div>
                 <div class="infra-item">
                     <h4><i class="fa-solid fa-database"></i> Servidor de Base de Datos</h4>
-                    <p>Infraestructura dedicada a almacenar, gestionar y recuperar datos estructurados o no estructurados de manera segura (ej. MySQL, PostgreSQL, MongoDB).</p>
+                    <p>Infraestructura dedicada a almacenar y recuperar datos de forma segura (ej. MySQL, MongoDB).</p>
                 </div>
                 <div class="infra-item">
                     <h4><i class="fa-solid fa-scale-balanced"></i> Balanceo de Cargas</h4>
-                    <p>Distribución eficiente del tráfico de red entrante entre múltiples servidores backend para evitar sobrecargas y garantizar disponibilidad continua.</p>
+                    <p>Distribuye el tráfico web entrante entre múltiples servidores para evitar caídas.</p>
                 </div>
                 <div class="infra-item">
                     <h4><i class="fa-solid fa-globe"></i> Configuración de Dominio</h4>
-                    <p>Asociación de una dirección legible por humanos (ej. tusitio.com) con la dirección IP pública del servidor donde se aloja la aplicación mediante registros DNS.</p>
+                    <p>Vincula una dirección legible (tudominio.com) con la IP del servidor mediante DNS.</p>
                 </div>
                 <div class="infra-item">
-                    <h4><i class="fa-solid fa-lock"></i> Certificados de Seguridad (SSL/TLS)</h4>
-                    <p>Protocolos criptográficos que cifran la conexión entre el navegador del usuario y el servidor, garantizando la privacidad e integridad de los datos (HTTPS).</p>
+                    <h4><i class="fa-solid fa-lock"></i> Certificados de Seguridad</h4>
+                    <p>Protocolos SSL/TLS que cifran la conexión web garantizando HTTPS.</p>
                 </div>
             </div>
         </section>
 
         <!-- TEMA 3: PRUEBAS DE SOFTWARE -->
         <section id="pruebas" class="card-section">
-            <h2><i class="fa-solid fa-vial"></i> Tipos de Pruebas de Software</h2>
-            <p>Las pruebas garantizan que el sistema funcione correctamente, cumpla con los requisitos y esté libre de errores críticos antes de su despliegue final.</p>
+            <h2><i class="fa-solid fa-vial"></i> Pruebas de Software</h2>
+            <p>Garantizan el correcto funcionamiento y calidad antes del despliegue final.</p>
             
             <div class="tests-grid">
                 <div class="test-card">
                     <h3>Caja Blanca</h3>
-                    <p>Pruebas basadas en la estructura interna, el código fuente y los caminos lógicos del sistema.</p>
+                    <p>Pruebas basadas en la estructura interna y caminos lógicos del código.</p>
                 </div>
                 <div class="test-card">
                     <h3>Caja Negra</h3>
-                    <p>Pruebas enfocadas en las entradas y salidas del sistema, sin evaluar el código interno.</p>
+                    <p>Evaluación enfocada exclusivamente en las entradas y salidas del sistema.</p>
                 </div>
                 <div class="test-card">
                     <h3>Unitarias</h3>
-                    <p>Evaluación de componentes o funciones individuales de forma aislada.</p>
+                    <p>Pruebas a componentes o funciones individuales de forma aislada.</p>
                 </div>
                 <div class="test-card">
                     <h3>Integración</h3>
-                    <p>Verificación de que diferentes módulos o servicios interactúan correctamente entre sí.</p>
+                    <p>Verificación de la interacción correcta entre distintos módulos.</p>
                 </div>
                 <div class="test-card">
                     <h3>Regresión</h3>
-                    <p>Pruebas para confirmar que los cambios recientes en el código no rompieron funcionalidades existentes.</p>
+                    <p>Confirma que los cambios recientes no hayan roto funciones existentes.</p>
                 </div>
                 <div class="test-card">
                     <h3>Rendimiento</h3>
-                    <p>Medición de la velocidad, capacidad de respuesta y estabilidad del sistema bajo carga.</p>
+                    <p>Mide la velocidad y estabilidad del sistema bajo cargas normales.</p>
                 </div>
                 <div class="test-card">
                     <h3>Esfuerzo (Stress)</h3>
-                    <p>Prueba los límites del sistema sometiéndolo a una carga extrema superior a la habitual.</p>
+                    <p>Prueba los límites extremos del sistema superando la carga habitual.</p>
                 </div>
                 <div class="test-card">
                     <h3>Usabilidad</h3>
-                    <p>Evaluación de qué tan intuitiva, accesible y fácil de usar es la interfaz para el usuario final.</p>
+                    <p>Evalúa qué tan intuitiva y accesible es la interfaz para el usuario.</p>
                 </div>
             </div>
         </section>
 
-        <!-- TEMA 4: POLÍTICAS, NORMATIVA Y DOCUMENTACIÓN -->
+        <!-- TEMA 4: LIBERACIÓN Y DOCUMENTACIÓN -->
         <section id="liberacion" class="card-section">
-            <h2><i class="fa-solid fa-clipboard-check"></i> Políticas, Normativa y Documentación</h2>
-            <p>La fase final de liberación requiere cumplir con normativas de calidad y entregar manuales claros para los usuarios y administradores.</p>
+            <h2><i class="fa-solid fa-clipboard-check"></i> Liberación y Docs</h2>
+            <p>Fase final basada en normativas y entrega de manuales técnicos.</p>
             
             <div class="release-box">
                 <div class="release-col">
                     <h3><i class="fa-solid fa-scale-balanced"></i> Políticas y Normativa</h3>
                     <ul>
-                        <li>Estándares de codificación limpios y seguros (ej. OWASP Top 10).</li>
-                        <li>Políticas de control de versiones y gestión de ramas (Git Flow).</li>
-                        <li>Cumplimiento de normativas de privacidad y protección de datos.</li>
+                        <li>Estándares de código limpio y seguro (OWASP).</li>
+                        <li>Control de versiones mediante Git Flow.</li>
+                        <li>Cumplimiento de normativas de privacidad de datos.</li>
                     </ul>
                 </div>
                 <div class="release-col">
-                    <h3><i class="fa-solid fa-book"></i> Documentación y Manual de Usuario</h3>
-                    <p><strong>Manual de Usuario:</strong> Guía detallada paso a paso orientada al usuario final que explica cómo navegar, utilizar las funciones principales y resolver dudas comunes dentro de la plataforma web.</p>
+                    <h3><i class="fa-solid fa-book"></i> Manual de Usuario</h3>
+                    <p>Guía paso a paso orientada al usuario final para explicar el uso y navegación de la plataforma web.</p>
                 </div>
             </div>
         </section>
 
     </main>
 
-    <!-- FOOTER -->
     <footer>
-        <p>CloudDeploy &copy; 2026 - Unidad IV: Pruebas y Liberación del Desarrollo Web</p>
+        <p>CloudDeploy &copy; 2026 - Unidad IV</p>
     </footer>
 
     <!-- SCRIPT DE JAVASCRIPT -->
-    <script src="script.js"></script>
+    <script>
+        const toolData = {
+            docker: {
+                title: "Docker",
+                description: "Plataforma de contenedores que aísla aplicaciones y dependencias para garantizar ejecución idéntica en cualquier equipo o servidor."
+            },
+            aws: {
+                title: "Amazon Web Services (AWS)",
+                description: "Nube líder de Amazon. Utiliza servicios como ECS y EKS para administrar contenedores automatizados a gran escala."
+            },
+            azure: {
+                title: "Microsoft Azure",
+                description: "Nube de Microsoft con soporte para Azure Kubernetes (AKS) e integración nativa con herramientas de desarrollo."
+            },
+            gcp: {
+                title: "Google Cloud Platform (GCP)",
+                description: "Infraestructura de Google destacada por GKE (Google Kubernetes Engine) y Cloud Run para contenedores optimizados."
+            }
+        };
+
+        function showInfo(toolKey) {
+            const titleElement = document.getElementById("info-title");
+            const textElement = document.getElementById("info-text");
+            const infoBox = document.getElementById("info-box");
+
+            if (toolData[toolKey]) {
+                titleElement.textContent = toolData[toolKey].title;
+                textElement.textContent = toolData[toolKey].description;
+                
+                infoBox.style.opacity = "0.2";
+                setTimeout(() => {
+                    infoBox.style.opacity = "1";
+                }, 100);
+            }
+        }
+    </script>
 </body>
 </html>
