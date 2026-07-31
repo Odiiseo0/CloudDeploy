@@ -22,7 +22,7 @@ body {
 }
 
 header {
-    background-color: rgba(30, 41, 59, 0.9);
+    background-color: rgba(30, 41, 59, 0.95);
     backdrop-filter: blur(10px);
     position: fixed;
     top: 0;
@@ -37,18 +37,25 @@ header {
 
 .logo {
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: var(--accent-color);
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
+nav {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding-bottom: 5px;
+}
+
 nav a {
     color: var(--text-muted);
     text-decoration: none;
-    margin-left: 20px;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    white-space: nowrap;
     transition: color 0.3s;
 }
 
@@ -57,24 +64,24 @@ nav a:hover {
 }
 
 .container {
-    max-width: 1000px;
-    margin: 100px auto 40px;
-    padding: 20px;
+    max-width: 900px;
+    margin: 90px auto 40px;
+    padding: 15px;
 }
 
 .card-section {
     background-color: var(--card-bg);
     border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 30px;
-    margin-bottom: 30px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
 }
 
 .card-section h2 {
     color: var(--accent-color);
-    margin-bottom: 15px;
-    font-size: 1.5rem;
+    margin-bottom: 12px;
+    font-size: 1.3rem;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -82,137 +89,135 @@ nav a:hover {
 
 .card-section > p {
     color: var(--text-muted);
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
 }
 
-.image-box img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 8px;
+.badge-img {
+    background: linear-gradient(135deg, #38bdf820, #38bdf810);
+    border: 1px dashed var(--accent-color);
+    padding: 25px;
+    text-align: center;
+    border-radius: 10px;
+    color: var(--accent-color);
     margin-bottom: 20px;
+    font-size: 0.9rem;
+}
+
+.badge-img i {
+    font-size: 2.5rem;
+    margin-bottom: 8px;
+    display: block;
 }
 
 .instruction {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--accent-color);
     margin-bottom: 12px;
+    font-weight: 600;
 }
 
 .interactive-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 15px;
-    margin-bottom: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+@media(min-width: 600px) {
+    .interactive-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
 
 .tool-card {
     background-color: var(--bg-color);
     border: 1px solid var(--border-color);
-    padding: 20px 10px;
+    padding: 15px 10px;
     text-align: center;
-    border-radius: 8px;
+    border-radius: 10px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
 }
 
-.tool-card:hover {
+.tool-card:active, .tool-card:hover {
     border-color: var(--accent-color);
-    transform: translateY(-3px);
-    background-color: #172033;
+    background-color: #162238;
+    transform: scale(0.98);
 }
 
 .tool-card i {
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: var(--accent-color);
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     display: block;
 }
 
 .tool-card span {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: var(--text-color);
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .info-display {
     background-color: var(--bg-color);
     border-left: 4px solid var(--accent-color);
-    padding: 20px;
-    border-radius: 0 8px 8px 0;
-    transition: all 0.3s ease;
+    padding: 15px;
+    border-radius: 0 10px 10px 0;
 }
 
 .info-display h4 {
     color: var(--accent-color);
-    margin-bottom: 8px;
-    font-size: 1.1rem;
+    margin-bottom: 6px;
+    font-size: 1rem;
 }
 
 .info-display p {
     color: var(--text-muted);
-    font-size: 0.95rem;
-}
-
-.infra-list, .tests-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 15px;
-}
-
-.infra-item, .test-card {
-    background-color: var(--bg-color);
-    padding: 20px;
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
-}
-
-.infra-item h4, .test-card h3 {
-    color: var(--accent-color);
-    font-size: 1.1rem;
-    margin-bottom: 8px;
-}
-
-.infra-item p, .test-card p {
-    color: var(--text-muted);
     font-size: 0.9rem;
 }
 
-.release-box {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
+.infra-list, .tests-grid, .release-box {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
-.release-col {
+.infra-item, .test-card, .release-col {
     background-color: var(--bg-color);
-    padding: 20px;
-    border-radius: 8px;
+    padding: 15px;
+    border-radius: 10px;
     border: 1px solid var(--border-color);
 }
 
-.release-col h3 {
+.infra-item h4, .test-card h3, .release-col h3 {
     color: var(--accent-color);
-    font-size: 1.1rem;
-    margin-bottom: 12px;
+    font-size: 1rem;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.infra-item p, .test-card p, .release-col p, .release-col li {
+    color: var(--text-muted);
+    font-size: 0.85rem;
 }
 
 .release-col ul {
-    list-style-type: disc;
-    padding-left: 20px;
-    color: var(--text-muted);
-    font-size: 0.9rem;
+    padding-left: 18px;
+    margin-top: 5px;
 }
 
 .release-col li {
-    margin-bottom: 6px;
+    margin-bottom: 4px;
 }
 
 footer {
     text-align: center;
-    padding: 20px;
+    padding: 25px 15px;
     background-color: var(--card-bg);
     border-top: 1px solid var(--border-color);
     color: var(--text-muted);
-    font-size: 0.85rem;
+    font-size: 0.8rem;
 }
