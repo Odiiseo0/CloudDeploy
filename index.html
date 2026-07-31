@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudDeploy - Unidad IV</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- HEADER / NAVEGACIÓN -->
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-cloud-arrow-up"></i> CloudDeploy
+        </div>
+        <nav>
+            <a href="#contenedores">Contenedores</a>
+            <a href="#infraestructura">Infraestructura Nube</a>
+            <a href="#pruebas">Pruebas</a>
+            <a href="#liberacion">Liberación & Docs</a>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <main class="container">
+
+        <!-- TEMA 1: CONTENEDORES -->
+        <section id="contenedores" class="card-section">
+            <h2><i class="fa-solid fa-box"></i> Concepto de Contenedores y Herramientas</h2>
+            <p>Los contenedores son unidades de software estándar que empaquetan el código y todas sus dependencias para que la aplicación se ejecute de manera rápida y confiable en cualquier entorno.</p>
+            <div class="image-box">
+                <img src="https://images.unsplash.com/photo-1618401471353-b98aedd04e11?q=80&w=1000&auto=format&fit=crop" alt="Contenedores Docker">
+            </div>
+            
+            <h3>Herramientas para la Gestión de Contenedores</h3>
+            <p class="instruction"><i class="fa-solid fa-hand-pointer"></i> Haz clic en cada herramienta para ver su información detallada:</p>
+            
+            <div class="interactive-grid">
+                <div class="tool-card" onclick="showInfo('docker')">
+                    <i class="fa-brands fa-docker"></i>
+                    <span>Docker</span>
+                </div>
+                <div class="tool-card" onclick="showInfo('aws')">
+                    <i class="fa-brands fa-aws"></i>
+                    <span>AWS</span>
+                </div>
+                <div class="tool-card" onclick="showInfo('azure')">
+                    <i class="fa-brands fa-microsoft"></i>
+                    <span>Azure</span>
+                </div>
+                <div class="tool-card" onclick="showInfo('gcp')">
+                    <i class="fa-brands fa-google"></i>
+                    <span>Google Cloud</span>
+                </div>
+            </div>
+
+            <div id="info-box" class="info-display">
+                <h4 id="info-title">Selecciona una herramienta</h4>
+                <p id="info-text">La información correspondiente aparecerá aquí al hacer clic en uno de los cuadros superiores.</p>
+            </div>
+        </section>
+
+        <!-- TEMA 2: INFRAESTRUCTURA EN LA NUBE -->
+        <section id="infraestructura" class="card-section">
+            <h2><i class="fa-solid fa-cloud"></i> Servicios de Infraestructura para Cómputo en la Nube</h2>
+            <p>La configuración de la infraestructura asegura que la aplicación web soporte cargas de trabajo reales de forma segura y escalable.</p>
+            
+            <div class="infra-list">
+                <div class="infra-item">
+                    <h4><i class="fa-solid fa-server"></i> Servidor de Aplicaciones</h4>
+                    <p>Entorno de software que proporciona el entorno de ejecución para los componentes de la aplicación y lógica de negocio (ej. Node.js, Tomcat, Gunicorn).</p>
+                </div>
+                <div class="infra-item">
+                    <h4><i class="fa-solid fa-database"></i> Servidor de Base de Datos</h4>
+                    <p>Infraestructura dedicada a almacenar, gestionar y recuperar datos estructurados o no estructurados de manera segura (ej. MySQL, PostgreSQL, MongoDB).</p>
+                </div>
+                <div class="infra-item">
+                    <h4><i class="fa-solid fa-scale-balanced"></i> Balanceo de Cargas</h4>
+                    <p>Distribución eficiente del tráfico de red entrante entre múltiples servidores backend para evitar sobrecargas y garantizar disponibilidad continua.</p>
+                </div>
+                <div class="infra-item">
+                    <h4><i class="fa-solid fa-globe"></i> Configuración de Dominio</h4>
+                    <p>Asociación de una dirección legible por humanos (ej. tusitio.com) con la dirección IP pública del servidor donde se aloja la aplicación mediante registros DNS.</p>
+                </div>
+                <div class="infra-item">
+                    <h4><i class="fa-solid fa-lock"></i> Certificados de Seguridad (SSL/TLS)</h4>
+                    <p>Protocolos criptográficos que cifran la conexión entre el navegador del usuario y el servidor, garantizando la privacidad e integridad de los datos (HTTPS).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TEMA 3: PRUEBAS DE SOFTWARE -->
+        <section id="pruebas" class="card-section">
+            <h2><i class="fa-solid fa-vial"></i> Tipos de Pruebas de Software</h2>
+            <p>Las pruebas garantizan que el sistema funcione correctamente, cumpla con los requisitos y esté libre de errores críticos antes de su despliegue final.</p>
+            
+            <div class="tests-grid">
+                <div class="test-card">
+                    <h3>Caja Blanca</h3>
+                    <p>Pruebas basadas en la estructura interna, el código fuente y los caminos lógicos del sistema.</p>
+                </div>
+                <div class="test-card">
+                    <h3>Caja Negra</h3>
+                    <p>Pruebas enfocadas en las entradas y salidas del sistema, sin evaluar el código interno.</p>
+                </div>
+                <div class="test-card">
+                    <h3>Unitarias</h3>
+                    <p>Evaluación de componentes o funciones individuales de forma aislada.</p>
+                </div>
+                <div class="test-card">
+                    <h3>Integración</h3>
+                    <p>Verificación de que diferentes módulos o servicios interactúan correctamente entre sí.</p>
+                </div>
+                <div class="test-card">
+                    <h3>Regresión</h3>
+                    <p>Pruebas para confirmar que los cambios recientes en el código no rompieron funcionalidades existentes.</p>
+                </div>
+                <div class="test-card">
+                    <h3>Rendimiento</h3>
+                    <p>Medición de la velocidad, capacidad de respuesta y estabilidad del sistema bajo carga.</p>
+                </div>
+                <div class="test-card">
+                    <h3>Esfuerzo (Stress)</h3>
+                    <p>Prueba los límites del sistema sometiéndolo a una carga extrema superior a la habitual.</p>
+                </div>
+                <div class="test-card">
+                    <h3>Usabilidad</h3>
+                    <p>Evaluación de qué tan intuitiva, accesible y fácil de usar es la interfaz para el usuario final.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TEMA 4: POLÍTICAS, NORMATIVA Y DOCUMENTACIÓN -->
+        <section id="liberacion" class="card-section">
+            <h2><i class="fa-solid fa-clipboard-check"></i> Políticas, Normativa y Documentación</h2>
+            <p>La fase final de liberación requiere cumplir con normativas de calidad y entregar manuales claros para los usuarios y administradores.</p>
+            
+            <div class="release-box">
+                <div class="release-col">
+                    <h3><i class="fa-solid fa-scale-balanced"></i> Políticas y Normativa</h3>
+                    <ul>
+                        <li>Estándares de codificación limpios y seguros (ej. OWASP Top 10).</li>
+                        <li>Políticas de control de versiones y gestión de ramas (Git Flow).</li>
+                        <li>Cumplimiento de normativas de privacidad y protección de datos.</li>
+                    </ul>
+                </div>
+                <div class="release-col">
+                    <h3><i class="fa-solid fa-book"></i> Documentación y Manual de Usuario</h3>
+                    <p><strong>Manual de Usuario:</strong> Guía detallada paso a paso orientada al usuario final que explica cómo navegar, utilizar las funciones principales y resolver dudas comunes dentro de la plataforma web.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>CloudDeploy &copy; 2026 - Unidad IV: Pruebas y Liberación del Desarrollo Web</p>
+    </footer>
+
+    <!-- SCRIPT DE JAVASCRIPT -->
+    <script src="script.js"></script>
+</body>
+</html>
